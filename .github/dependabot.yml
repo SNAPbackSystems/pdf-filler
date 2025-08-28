@@ -1,9 +1,7 @@
-# .github/dependabot.yml
 version: 2
 updates:
-  # For Node.js projects (example: GSA pdf-filler)
   - package-ecosystem: "npm"
-    directory: "/"          # Location of package.json
+    directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
@@ -11,10 +9,10 @@ updates:
       all-npm-updates:
         patterns:
           - "*"
+    labels: ["deps", "auto-update"]
 
-  # For Python projects (example: Code for America pdf-filler)
   - package-ecosystem: "pip"
-    directory: "/"          # Location of requirements.txt
+    directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
@@ -22,3 +20,15 @@ updates:
       all-pip-updates:
         patterns:
           - "*"
+    labels: ["deps", "auto-update"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    groups:
+      actions-updates:
+        patterns:
+          - "*"
+    labels: ["deps", "ci"]
